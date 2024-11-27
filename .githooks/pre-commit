@@ -1,0 +1,21 @@
+#!/bin/bash
+set -e
+
+echo "Executando verificações antes do commit com PDM..."
+
+# Ativa o ambiente do PDM
+eval "$(pdm --pep582)"
+
+# Verifica se o código segue os padrões com Black
+pdm run black --check .
+
+# Organiza e verifica imports
+pdm run isort --check-only .
+
+# Verifica problemas com flake8
+pdm run flake8 .
+
+# Executa os testes
+pdm run pytest
+
+echo "Todas as verificações passaram!"

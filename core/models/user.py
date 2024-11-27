@@ -9,7 +9,7 @@ from django.contrib.auth.models import (
 )
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-
+import uuid
 
 class UserManager(BaseUserManager):
     """Manager for users."""
@@ -44,7 +44,8 @@ class User(AbstractBaseUser, PermissionsMixin):
         max_length=255,
         unique=True,
         verbose_name=_("passage_id"),
-        help_text=_("Passage ID")
+        help_text=_("Passage ID"),
+        default=uuid.uuid4()
     )
     email = models.EmailField(
         max_length=255,
