@@ -10,7 +10,7 @@ class Ocorrencia(models.Model):
     data_criacao = models.DateTimeField(auto_now_add=True)  
     turma = models.ForeignKey('Turma', null=True, blank=True, on_delete=models.CASCADE, related_name="ocorrencias")
     aluno = models.ForeignKey('Aluno', null=True, blank=True, on_delete=models.CASCADE, related_name="ocorrencias")
-    trimestre = models.ForeignKey("Trimestre", on_delete=models.CASCADE, related_name="ocorrencias")
+    trimestre = models.ForeignKey("Trimestre", on_delete=models.CASCADE, related_name="ocorrencias", null=True, blank=True)
     
     tipo = models.CharField(max_length=2, choices=Tipo.choices, default=Tipo.OCORRENCIA) 
 
