@@ -1,5 +1,5 @@
 from django.db import models
-from models import User 
+from .user import User 
 
 class Disciplina(models.Model):
     nome = models.CharField(max_length=100)
