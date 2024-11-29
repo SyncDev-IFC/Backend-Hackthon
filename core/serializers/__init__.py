@@ -6,3 +6,4 @@ from .turma import TurmaSerializer
 from .curso import CursoSerializer
 from .ocorrencia import OcorrenciaSerializer
 from .nota import NotaSerializer
+from .conselho import ConselhoSerializer
