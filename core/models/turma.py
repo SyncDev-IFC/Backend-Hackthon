@@ -11,7 +11,7 @@ class Turma(models.Model):
     data_criacao = models.DateTimeField(auto_now_add=True)     
     ultima_atualizacao = models.DateTimeField(auto_now=True)
     image = models.ForeignKey(Image, related_name="+", on_delete=models.SET_NULL, null=True, blank=True, default=None)
-    disciplinas = models.ManyToManyField(Disciplina, related_name="turmas", null=True, blank=True)
+    disciplinas = models.ManyToManyField(Disciplina, related_name="turmas")
     curso = models.ForeignKey(Curso, on_delete=models.CASCADE, null=True, blank=True)
     
 
