@@ -5,6 +5,6 @@ router = DefaultRouter()
 
 router.register(r'usuarios', UserViewSet, basename='usuarios')
 router.register(r'trimestres', TrimestreViewSet, basename='trimestres')
-router.register(r'turmas', TurmaViewSet, basename='turnas')
+router.register(r'turmas', TurmaViewSet, basename='turmas')
 
 urlpatterns = router.urls
