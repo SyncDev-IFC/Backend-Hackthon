@@ -1,31 +1,40 @@
 {
-    "python.analysis.extraPaths": ["${workspaceFolder}/__pypackages__/3.10/lib"],
-    "python.autoComplete.extraPaths": ["${workspaceFolder}/__pypackages__/3.10/lib"],
-    "python.analysis.autoImportCompletions": true,
-    "python.analysis.indexing": true,
-    "python.analysis.packageIndexDepths": [
-      {
-        "name": "django",
-        "includeAllSymbols": true,
-        "depth": 10
-      },
-      {
-        "name": "rest_framework",
-        "includeAllSymbols": true,
-        "depth": 10
-      },
-      {
-        "name": "core",
-        "includeAllSymbols": true,
-        "depth": 10
-      }
-    ],
-    "python.testing.autoTestDiscoverOnSaveEnabled": true,
-    "editor.defaultFormatter": "ms-python.black-formatter",
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-      "source.organizeImports": "always"
+  "python.analysis.extraPaths": [
+    "${workspaceFolder}/__pypackages__/3.10/lib"
+  ],
+  "python.autoComplete.extraPaths": [
+    "${workspaceFolder}/__pypackages__/3.10/lib"
+  ],
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.indexing": true,
+  "python.analysis.packageIndexDepths": [
+    {
+      "name": "django",
+      "includeAllSymbols": true,
+      "depth": 10
     },
-    "isort.args": ["--profile", "black"]
+    {
+      "name": "rest_framework",
+      "includeAllSymbols": true,
+      "depth": 10
+    },
+    {
+      "name": "core",
+      "includeAllSymbols": true,
+      "depth": 10
+    }
+  ],
+  "python.testing.autoTestDiscoverOnSaveEnabled": true,
+  "editor.defaultFormatter": "ms-python.black-formatter",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "always"
+  },
+  "isort.args": [
+    "--profile",
+    "black"
+  ],
+  "[django-html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
-  
+}
