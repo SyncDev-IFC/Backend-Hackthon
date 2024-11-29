@@ -6,3 +6,4 @@ from .turma import TurmaViewSet
 from .curso import CursoViewSet
 from .ocorrencia import OcorrenciaViewSet
 from .nota import NotaViewSet
+from .conselho import ConselhoViewSet
