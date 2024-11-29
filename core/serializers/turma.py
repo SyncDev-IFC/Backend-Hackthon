@@ -7,4 +7,3 @@ class TurmaSerializer(ModelSerializer):
     class Meta:
         model = Turma
         fields = "__all__"
-        depth = 1
