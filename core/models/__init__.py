@@ -5,3 +5,4 @@ from .trimestre import Trimestre
 from .turma import Turma
 from .curso import Curso
 from .ocorrencia import Ocorrencia
+from .nota import Nota

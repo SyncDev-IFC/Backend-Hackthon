@@ -5,3 +5,4 @@ from .trimestre import TrimestreViewSet
 from .turma import TurmaViewSet
 from .curso import CursoViewSet
 from .ocorrencia import OcorrenciaViewSet
+from .nota import NotaViewSet
