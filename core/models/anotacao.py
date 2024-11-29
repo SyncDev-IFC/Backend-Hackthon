@@ -1,6 +1,6 @@
 from django.db import models
 
-from core.models import Conselho
+from core.models import Conselho, Aluno
 
 class Anotacao(models.Model):
     class Tipo(models.TextChoices):
@@ -15,6 +15,7 @@ class Anotacao(models.Model):
     descricao = models.TextField()
     data_criacao = models.DateTimeField(auto_now_add=True)
     conselho = models.ForeignKey(Conselho, on_delete=models.CASCADE, related_name='anotacoes', null=True, blank=True, default=None)
+    aluno = models.ForeignKey(Aluno, on_delete=models.CASCADE, related_name='anotacoes', null=True, blank=True, default=None)
 
 
     def __str__(self):
