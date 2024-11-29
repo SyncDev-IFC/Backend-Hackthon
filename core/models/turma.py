@@ -1,5 +1,5 @@
 from django.db import models
-from core.models import Disciplina
+from .disciplina import Disciplina
 from .curso import Curso
 from uploader.models import Image
 
@@ -13,10 +13,10 @@ class Turma(models.Model):
     image = models.ForeignKey(Image, related_name="+", on_delete=models.SET_NULL, null=True, blank=True, default=None)
     disciplinas = models.ManyToManyField(Disciplina, related_name="turmas")
     curso = models.ForeignKey(Curso, on_delete=models.CASCADE, null=True, blank=True)
-    
 
     class Meta:
         ordering = ["ano_letivo", "nome"]  
 
     def __str__(self):
         return f"{self.nome} ({self.ano_letivo})"
+

@@ -4,7 +4,6 @@ class Ocorrencia(models.Model):
     class Tipo(models.TextChoices):
         OCORRENCIA = 'OC', 'Ocorrência'
         OBSERVACAO = 'OB', 'Observação'
-    
     titulo = models.CharField(max_length=100)  
     conteudo = models.TextField() 
     data_criacao = models.DateTimeField(auto_now_add=True)  
