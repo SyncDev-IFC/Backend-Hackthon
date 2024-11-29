@@ -40,6 +40,7 @@ def LoginUser(request):
                     "access": str(access),
                     "email": user_auth.email,
                     "id": user_auth.id,
+                    "group": [group.name for group in user_auth.groups.all()],
                     "message": "Login realizado com sucesso!"
                 }
                 return Response(response_data, status=status.HTTP_200_OK)
