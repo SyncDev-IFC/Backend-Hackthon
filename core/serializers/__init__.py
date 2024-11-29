@@ -7,3 +7,5 @@ from .curso import CursoSerializer
 from .ocorrencia import OcorrenciaSerializer
 from .nota import NotaSerializer
 from .conselho import ConselhoSerializer
+from .observacao import ObservacaoSerializer
+from .anotacao import AnotacaoSerializer

@@ -7,3 +7,5 @@ from .curso import Curso
 from .ocorrencia import Ocorrencia
 from .nota import Nota
 from .conselho import Conselho
+from .observacao import Observacao
+from .anotacao import Anotacao
