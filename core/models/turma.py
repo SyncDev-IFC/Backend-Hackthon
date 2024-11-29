@@ -1,5 +1,6 @@
 from django.db import models
 from core.models import Disciplina
+from .curso import Curso
 from uploader.models import Image
 
 class Turma(models.Model):
@@ -11,6 +12,8 @@ class Turma(models.Model):
     ultima_atualizacao = models.DateTimeField(auto_now=True)
     image = models.ForeignKey(Image, related_name="+", on_delete=models.SET_NULL, null=True, blank=True, default=None)
     disciplinas = models.ManyToManyField(Disciplina, related_name="turmas", null=True, blank=True)
+    curso = models.ForeignKey(Curso, on_delete=models.CASCADE, null=True, blank=True)
+    
 
     class Meta:
         ordering = ["ano_letivo", "nome"]  
