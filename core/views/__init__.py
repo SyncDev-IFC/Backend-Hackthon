@@ -7,3 +7,5 @@ from .curso import CursoViewSet
 from .ocorrencia import OcorrenciaViewSet
 from .nota import NotaViewSet
 from .conselho import ConselhoViewSet
+from .anotacao import AnotacaoViewSet
+from .observacao import ObservacaoViewSet

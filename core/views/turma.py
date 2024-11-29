@@ -9,7 +9,7 @@ class TurmaViewSet(ModelViewSet):
     serializer_class = TurmaSerializer
 
     def get_queryset(self):
-        queryset = super().get_queryset()
-        for turma in queryset:
-            turma.calcular_media_da_turma()
-        return queryset
+        """
+        Retorna o queryset da turma, que agora terá o campo `media_da_turma` calculado automaticamente.
+        """
+        return super().get_queryset()

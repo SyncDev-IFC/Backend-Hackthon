@@ -1,5 +1,6 @@
+from core.models.observacao import Observacao
 from rest_framework.serializers import ModelSerializer, SerializerMethodField
-from core.models import Aluno, Ocorrencia
+from core.models import Aluno, Ocorrencia, Observacao
 
 class AlunoSerializer(ModelSerializer):
     historico = SerializerMethodField()
@@ -7,24 +8,35 @@ class AlunoSerializer(ModelSerializer):
 
     class Meta:
         model = Aluno
-        fields = "__all__"
+        fields = ["id", "nome", "foto", "email", "notas", "historico"]
 
     def get_historico(self, obj):
-        # Obtém as ocorrências relacionadas ao aluno
         ocorrencias = Ocorrencia.objects.filter(aluno=obj)
-        return [
-            {
-                "id": ocorrencia.id,
-                "titulo": ocorrencia.titulo,
-                "conteudo": ocorrencia.conteudo,
-                "data_criacao": ocorrencia.data_criacao.strftime("%d/%m/%Y %H:%M"),
-                "tipo": ocorrencia.get_tipo_display(), 
-                "trimestre": ocorrencia.trimestre.nome if ocorrencia.trimestre else None,
-            }
-            for ocorrencia in ocorrencias
-        ]
+        observacoes = Observacao.objects.filter(aluno=obj)
+    
+        return {
+            "ocorrencias": [
+                {
+                    "id": ocorrencia.id,
+                    "conteudo": ocorrencia.conteudo,
+                    "data_criacao": ocorrencia.data_criacao.strftime("%d/%m/%Y %H:%M"),
+                    "tipo": ocorrencia.get_tipo_display(),
+                }
+                for ocorrencia in ocorrencias
+            ],
+            "observacoes": [
+                {
+                    "id": observacao.id,
+                    "conteudo": observacao.conteudo,
+                    "data_criacao": observacao.data_criacao.strftime("%d/%m/%Y %H:%M"),
+                }
+                for observacao in observacoes
+            ],
+    }
+
+
 
     def get_notas(self, obj):
-        from core.serializers import AlunoNotaSerializer
+        from core.serializers import NotaSmallSerializer
         notas = obj.notas.all()  
-        return AlunoNotaSerializer(notas, many=True).data
+        return NotaSmallSerializer(notas, many=True).data

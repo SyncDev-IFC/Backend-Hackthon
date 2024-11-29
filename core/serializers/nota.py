@@ -16,3 +16,14 @@ class AlunoNotaSerializer(ModelSerializer):
 
     def get_trimes_name(self, obj):
         return obj.trimestre.get_name_display() if obj.trimestre else None
+
+
+class NotaSmallSerializer(ModelSerializer):
+    trimes_name = SerializerMethodField()
+    class Meta:
+        model = Nota
+        fields = ['nota', 'trimes_name']
+
+    
+    def get_trimes_name(self, obj):
+        return obj.trimestre.get_name_display() if obj.trimestre else None

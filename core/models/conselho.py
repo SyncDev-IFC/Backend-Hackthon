@@ -12,7 +12,7 @@ class Conselho(models.Model):
 
     def __str__(self):
         status  = "Ativado" if self.ativo else "Desativado"
-        return f"{self.turma.nome} - {self.trimestre.nome} ({status})"
+        return f"{self.turma.nome} - {self.trimestre.name} ({status})"
     
     def ativar_conselho(self):
         self.ativo = True
