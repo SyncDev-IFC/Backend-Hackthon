@@ -2,7 +2,7 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework import viewsets
 from core.models import Nota, Trimestre
-from core.serializers import NotaSerializer
+from core.serializers import NotaSerializer, AlunoNotaSerializer
 
 class NotaViewSet(viewsets.ModelViewSet):
     queryset = Nota.objects.all()
@@ -22,6 +22,6 @@ class NotaViewSet(viewsets.ModelViewSet):
 
         notas_no_trimestre = Nota.objects.filter(trimestre=trimestre)
 
-        notas_serializer = NotaSerializer(notas_no_trimestre, many=True)
+        notas_serializer = AlunoNotaSerializer(notas_no_trimestre, many=True)
 
         return Response(notas_serializer.data)

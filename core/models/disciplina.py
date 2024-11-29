@@ -7,4 +7,4 @@ class Disciplina(models.Model):
     professor = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, default=None, related_name='disciplinas')
 
     def __str__(self):
-        return f"{self.nome}/"
+        return f"{self.nome}"
