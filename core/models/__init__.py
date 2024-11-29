@@ -6,3 +6,4 @@ from .turma import Turma
 from .curso import Curso
 from .ocorrencia import Ocorrencia
 from .nota import Nota
+from .conselho import Conselho

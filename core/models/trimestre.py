@@ -9,4 +9,4 @@ class Trimestre(models.Model):
     name = models.IntegerField(choices=TrimestreName.choices, unique=True)
     ano = models.PositiveIntegerField()
     def __str__(self):
-        return self.get_name_display()
+        return f"{self.name}"
