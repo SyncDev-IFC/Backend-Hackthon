@@ -12,10 +12,8 @@ class OcorrenciaViewSet(ModelViewSet):
 
     @action(detail=False, methods=['get'], url_path='por_trimestre/(?P<trimestre_id>\d+)')
     def por_trimestre(self, pk=None, trimestre_id=None):
-        # Fetch occurrences related to the given trimestre_id
         ocorrencias = Ocorrencia.objects.filter(trimestre=trimestre_id)
         
-        # Serialize the list of Ocorrencia objects
         ocorrencias_serializer = OcorrenciaSerializer(ocorrencias, many=True)
 
         return Response(ocorrencias_serializer.data)

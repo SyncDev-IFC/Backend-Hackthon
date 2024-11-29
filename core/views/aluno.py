@@ -35,5 +35,5 @@ class AlunoViewSet(ModelViewSet):
         else:
             alunos_filtrados = Aluno.objects.all()
 
-        serializer = self.get_serializer(alunos_filtrados, many=True)
+        serializer = AlunoSerializer(alunos_filtrados, many=True)
         return Response(serializer.data)

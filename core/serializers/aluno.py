@@ -3,12 +3,14 @@ from core.models import Aluno, Ocorrencia
 
 class AlunoSerializer(ModelSerializer):
     historico = SerializerMethodField()
+    notas = SerializerMethodField()
 
     class Meta:
         model = Aluno
         fields = "__all__"
 
     def get_historico(self, obj):
+        # Obtém as ocorrências relacionadas ao aluno
         ocorrencias = Ocorrencia.objects.filter(aluno=obj)
         return [
             {
@@ -21,3 +23,8 @@ class AlunoSerializer(ModelSerializer):
             }
             for ocorrencia in ocorrencias
         ]
+
+    def get_notas(self, obj):
+        from core.serializers import AlunoNotaSerializer
+        notas = obj.notas.all()  
+        return AlunoNotaSerializer(notas, many=True).data
