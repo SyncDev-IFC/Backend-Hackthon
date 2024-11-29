@@ -20,9 +20,6 @@
         "depth": 10
       }
     ],
-    "[python]": {
-      "editor.defaultFormatter": "ms-python.black-formatter"
-    },
     "python.testing.autoTestDiscoverOnSaveEnabled": true,
     "editor.defaultFormatter": "ms-python.black-formatter",
     "editor.formatOnSave": true,
