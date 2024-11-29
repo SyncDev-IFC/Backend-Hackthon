@@ -14,9 +14,11 @@ class Conselho(models.Model):
         status  = "Ativado" if self.ativo else "Desativado"
         return f"{self.turma.nome} - {self.trimestre.name} ({status})"
     
-    def ativar_conselho(self):
+    def ativar_conselho(self, data_fim=None):
+        """Agora o método aceita a data_fim como argumento"""
         self.ativo = True
-        self.data_inicio = timezone.now()
+        if data_fim:
+            self.data_fim = data_fim  
         self.save()
 
     def desativar_conselho(self):
