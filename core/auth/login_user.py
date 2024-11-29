@@ -27,10 +27,8 @@ def LoginUser(request):
             print("Stored Password:", user.password)
             print("Password Check:", check_password(password, user.password))
             print("Is user active:", user.is_active)
-            username = user.username
-            print("User found in database:", username)
 
-            user_auth = authenticate(username=username, password=password)
+            user_auth = authenticate(email=email, password=password)
             print("Authentication result:", user_auth)
 
             if user_auth is not None:
@@ -40,7 +38,6 @@ def LoginUser(request):
                 response_data = {
                     "refresh": str(refresh),
                     "access": str(access),
-                    "username": user_auth.username,
                     "email": user_auth.email,
                     "id": user_auth.id,
                     "message": "Login realizado com sucesso!"

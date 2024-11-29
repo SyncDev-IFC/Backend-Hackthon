@@ -8,6 +8,9 @@ from drf_spectacular.views import (
 )
 
 from core.router import urlpatterns as router_urls
+from core.auth.login_user import LoginUser
+from core.auth.forgot_password import ForgotPasswordUser
+from core.auth.reset_password import ResetPasswordUser
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -19,4 +22,7 @@ urlpatterns = [
     
     # API
     path('api/', include(router_urls)),  
+    path("api/login/", LoginUser, name="login"),
+    path("api/forgot-password/", ForgotPasswordUser, name="forgot-password"),
+    path("api/reset-password/", ResetPasswordUser, name="reset-password"),
 ]
