@@ -25,6 +25,10 @@ dependencies = [
     'setuptools>=68.2.2',
     'uvicorn>=0.29.0',
     'whitenoise[brotli]>=6.6.0',
+    "black>=24.10.0",
+    "flake8>=7.1.1",
+    "pytest>=8.3.3",
+    "djangorestframework-simplejwt>=5.3.1",
 ]
 requires-python = ">=3.10"
 license = { text = "MIT" }
@@ -57,6 +61,10 @@ test = "python manage.py test"
 loaddata = "python manage.py loaddata core.json"
 dumpdata = "python manage.py dumpdata --indent 2"
 cria_api = "python ./scripts/cria_api.py {args}"
+black = "black"
+isort = "isort"
+flake8 = "flake8"
+pytest = "pytest"
 
 [tool.black]
 line-length = 120

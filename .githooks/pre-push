@@ -1,0 +1,20 @@
+#!/bin/bash
+set -e
+
+echo "Executando verificações antes do push com PDM..."
+
+# Ativa o ambiente do PDM
+eval "$(pdm --pep582)"
+
+# Executa os testes
+pdm run pytest
+
+# Verifica se há migrações não aplicadas
+if pdm run python manage.py makemigrations --dry-run | grep "No changes detected" > /dev/null; then
+    echo "Nenhuma migração pendente."
+else
+    echo "Existem migrações pendentes. Certifique-se de commitar as alterações das migrações."
+    exit 1
+fi
+
+echo "Push aprovado!"

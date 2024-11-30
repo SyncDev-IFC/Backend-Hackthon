@@ -1,0 +1,12 @@
+#!/bin/bash
+set -e
+
+echo "Executando pós-merge com PDM..."
+
+# Instala dependências
+pdm install
+
+# Aplica as migrações
+pdm run python manage.py migrate
+
+echo "Ambiente atualizado com sucesso!"
