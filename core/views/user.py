@@ -23,6 +23,7 @@ class UserViewSet(ModelViewSet):
     @action(detail=False, methods=["get"])
     def export_users_to_excel(self, request):
         """Export users to an Excel file."""
+
         # Criando um novo arquivo Excel
         wb = openpyxl.Workbook()
         ws = wb.active
@@ -37,7 +38,9 @@ class UserViewSet(ModelViewSet):
 
         # Adicionando os dados dos usuários ao arquivo Excel
         for user in users:
-            ws.append([user.id, user.name, user.email, user.last_login])
+            # Remover o fuso horário do campo 'last_login' se existir
+            last_login = user.last_login.replace(tzinfo=None) if user.last_login else None
+            ws.append([user.id, user.name, user.email, last_login])
 
         # Preparando a resposta para baixar o arquivo
         response = HttpResponse(
@@ -47,4 +50,6 @@ class UserViewSet(ModelViewSet):
 
         # Salvando o arquivo na resposta
         wb.save(response)
+        
+        # Retorno após salvar
         return response
